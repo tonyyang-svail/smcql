@@ -31,6 +31,12 @@ public class ParseTest extends BaseTest {
     runTest("aspirin-count");
   }
 
+  public void testHhi()
+          throws ClassNotFoundException, SQLException, SqlParseException, ValidationException,
+          RelConversionException, IOException {
+    runTest("hhi");
+  }
+
   public void runTest(String testName)
       throws IOException, ClassNotFoundException, SQLException, SqlParseException,
           ValidationException, RelConversionException {
