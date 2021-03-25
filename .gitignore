@@ -10,3 +10,5 @@ runtogether.sh
 smcql.log*
 /bin/
 /target/
+.idea
+smcql-open-source.iml

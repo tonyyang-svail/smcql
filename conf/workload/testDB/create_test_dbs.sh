@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 #run from smcql home, which contains src/ 
 path=$(pwd)
 echo "Using test data from $path"
@@ -12,14 +14,22 @@ fi
 echo "Creating test database..."
 
 dbPrefix='smcql_testDB'
+
+set +e
 dropdb $dbPrefix
+set -e
+
 createdb $dbPrefix
 psql $dbPrefix -f $path/conf/workload/testDB/test_schema.sql
 
 for i in 1 2
 do
     dbName=$dbPrefix'_site'$i
+
+    set +e
     dropdb $dbName
+    set -e
+
     createdb $dbName
 
     psql $dbName -f $path/conf/workload/testDB/test_schema.sql
